@@ -7,34 +7,75 @@
 	<title>Document</title>
 </head>
 <body>
-	<header>
-		<a href="index.html">main page</a>
-		<table id="header-table" class="header-table-vertical-center">
-			<tr>
-				<td><a href="installation.html">installation&nbsp;&nbsp;</a></td>
-				<td><a href="changelog.html">changelog&nbsp;&nbsp;</a></td>
-				<td><a href="roles.html">roles&nbsp;&nbsp;</a></td>
-				<td><a href="modifiers.html">modifiers&nbsp;&nbsp;</a></td>
-			</tr>
-		</table>
-		<table id="icons-table">
-			<tr>
-				<td>
-					<a href="https://github.com/badzyn/Town-Of-Us-Unofficial" target="_blank" title="GitHub" class="social-icon">
-                		<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="32" height="32" />
-            		</a>
-				</td>
-				<td><a href="https://discord.gg/vXfrpYGguu" target="_blank" title="Discord" class="social-icon">
-                		<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" width="32" height="32" /></td>
-			</tr>
-		</table>
-	</header>
+<header>
+	<a href="https://badzyn.github.io" style="margin-right:32px;">main page</a>
+	<button id="menu-toggle" aria-label="Open menu" style="display:none;position:absolute;right:30px;top:50%;transform:translateY(-50%);font-size:2rem;background:none;border:none;color:white;cursor:pointer;z-index:20;">&#9776;</button>
+	<div class="header-content" style="display:flex;align-items:center;gap:32px;">
+		<nav id="header-links" class="header-table-vertical-center" style="display:flex;align-items:center;gap:24px;">
+			<a href="installation.html">installation</a>
+			<a href="changelog.html">changelog</a>
+			<a href="roles.html">roles</a>
+			<a href="modifiers.html">modifiers</a>
+		</nav>
+		<div id="header-icons" style="display:flex;align-items:center;gap:16px;">
+			<a href="https://github.com/badzyn/Town-Of-Us-Unofficial" target="_blank" title="GitHub" class="social-icon">
+				<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="32" height="32" />
+			</a>
+			<a href="https://discord.gg/vXfrpYGguu" target="_blank" title="Discord" class="social-icon">
+				<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" width="32" height="32" />
+			</a>
+		</div>
+	</div>
+	<nav id="dropdown-menu" style="display:none;position:absolute;top:100px;right:30px;background:#222;padding:20px 30px 20px 30px;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.18);z-index:100;">
+		<a href="installation.html" style="display:block;margin:10px 0;">installation</a>
+		<a href="changelog.html" style="display:block;margin:10px 0;">changelog</a>
+		<a href="roles.html" style="display:block;margin:10px 0;">roles</a>
+		<a href="modifiers.html" style="display:block;margin:10px 0;">modifiers</a>
+		<div style="display:flex;gap:16px;justify-content:center;margin-top:16px;">
+			<a href="https://github.com/badzyn/Town-Of-Us-Unofficial" target="_blank" title="GitHub" class="social-icon">
+				<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="32" height="32" />
+			</a>
+			<a href="https://discord.gg/vXfrpYGguu" target="_blank" title="Discord" class="social-icon">
+				<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" alt="Discord" width="32" height="32" />
+			</a>
+		</div>
+	</nav>
+</header>
 	<section>
 	  <h1>an official guide to</h1>
 <img id="touulogo" src="./imgs/TOUu-logo.png" alt="Town of us unofficial logo">
+<p id="description">This is a comprehensive guide to the Town of Us mod, covering installation, roles, and gameplay mechanics.</p>
+<p id="description">If you want to ask something, join our discord.</p>
 </section>
 <footer>
 <p>copyright &copy; 2025. all rights reserved.</p>
 </footer>
+<script>
+const menuToggle = document.getElementById('menu-toggle');
+const dropdownMenu = document.getElementById('dropdown-menu');
+const headerTable = document.getElementById('header-table');
+
+function handleResize() {
+	if(window.innerWidth <= 700) {
+		menuToggle.style.display = 'block';
+		document.querySelector('.header-content').style.display = 'none';
+	} else {
+		menuToggle.style.display = 'none';
+		document.querySelector('.header-content').style.display = '';
+		dropdownMenu.style.display = 'none';
+	}
+}
+
+menuToggle.addEventListener('click', function() {
+	if(dropdownMenu.style.display === 'block') {
+		dropdownMenu.style.display = 'none';
+	} else {
+		dropdownMenu.style.display = 'block';
+	}
+});
+
+window.addEventListener('resize', handleResize);
+window.addEventListener('DOMContentLoaded', handleResize);
+</script>
 </body>
 </html>
